@@ -1,0 +1,20 @@
+{
+  "name": "Totoro Todos",
+  "short_name": "Todos",
+  "start_url": "/login.html",
+  "display": "standalone",
+  "background_color": "#a3d9a5",
+  "theme_color": "#7BA87F",
+  "icons": [
+    {
+      "src": "totoro-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "totoro-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

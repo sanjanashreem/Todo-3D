@@ -1,0 +1,336 @@
+/* Import a playful, rounded font for that Ghibli feel */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* Studio Ghibli / Totoro Color Palette */
+:root {
+    --totoro-grey: #8CA0A6;
+    --totoro-belly: #F5F4F0;
+    --leaf-green: #7BA87F;
+    --leaf-dark: #58805B;
+    --earth-brown: #5C4B3C;
+    --sky-blue: #D4E5ED;
+    --soot-black: #3A3A3A;
+    --danger: #E27B7B;
+    --danger-dark: #B85959;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* =========================================
+   CINEMATIC SPRING TOTORO BACKGROUND
+   ========================================= */
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--soot-black);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem; 
+    position: relative;
+    overflow: hidden; /* Prevents scrollbars from the animation */
+    background-color: #a3d9a5; /* Fallback green */
+}
+
+/* LAYER 1: The Totoro Image with a "Breathing" Wind Effect */
+body::before {
+    content: "";
+    position: absolute;
+    /* We make it slightly larger than the screen so we have room to move it */
+    top: -5%; left: -5%; right: -5%; bottom: -5%;
+    
+    /* Make sure totoro.jpg is in the exact same folder as your CSS file */
+    background-image: url('totoro.png');
+    background-size: cover;
+    background-position: center bottom; /* Keeps the flowers anchored */
+    
+    /* A very subtle dark overlay so your white app doesn't blend into the bright sky */
+    box-shadow: inset 0 0 0 2000px rgba(0, 50, 20, 0.15);
+    
+    z-index: -2;
+    /* The wind animation */
+    animation: gentleBreeze 12s ease-in-out infinite alternate;
+}
+
+@keyframes gentleBreeze {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.05) translate(-15px, 10px); }
+}
+
+/* LAYER 2: Floating Pollen & Small Flying Insects */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 235, 150, 0.9); /* Golden sunlight color */
+    
+    /* We generate a swarm of insects and pollen using just one element */
+    box-shadow: 
+        10vw 15vh 8px 2px #ffeb96, 
+        25vw 45vh 5px 1px #fff, 
+        50vw 80vh 8px 2px #ffeb96, 
+        75vw 35vh 5px 1px #fff, 
+        85vw 60vh 8px 2px #ffeb96, 
+        15vw 85vh 5px 1px #fff, 
+        40vw 25vh 8px 2px #ffeb96, 
+        90vw 15vh 5px 1px #fff,
+        20vw 70vh 6px 2px #ffeb96,
+        60vw 20vh 4px 1px #fff;
+        
+    z-index: -1;
+    animation: swarm 20s linear infinite;
+}
+
+@keyframes swarm {
+    0% { transform: translateY(100vh) translateX(-50px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-20vh) translateX(150px); opacity: 0; }
+}
+
+/* =========================================
+   Ensure the container floats ABOVE the image
+   ========================================= */
+
+/* =========================================
+   3D FLOATING CONTAINER
+   ========================================= */
+.container {
+    z-index: 10; /* Keeps your app on top of the forest */
+    position: relative;
+    background-color: var(--totoro-belly);
+    width: 100%;
+    max-width: 420px; 
+    padding: 2.5rem;
+    border: 4px solid var(--totoro-grey);
+    border-radius: 30px;
+    
+    /* Creates a massive 3D pop off the dark background + a magical soft glow */
+    box-shadow: 
+        0 15px 0 var(--totoro-grey), 
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 100px rgba(165, 214, 167, 0.15); 
+        
+    text-align: center;
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+} 
+
+/* 3D Totoro Belly Card */
+.container {
+    background-color: var(--totoro-belly);
+    width: 100%;
+    max-width: 420px; 
+    padding: 2.5rem;
+    border: 4px solid var(--totoro-grey);
+    border-radius: 30px;
+    /* 3D chunky shadow effect */
+    box-shadow: 0 15px 0 var(--totoro-grey), 0 25px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    /* Magical floating animation */
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+h2 {
+    margin-bottom: 1.75rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--earth-brown);
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+}
+
+.form-group {
+    margin-bottom: 0.5rem; 
+}
+
+/* 3D Carved-in Inputs */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border: 3px solid var(--totoro-grey);
+    border-radius: 16px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--earth-brown);
+    /* Inset shadow to look carved */
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.06);
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--leaf-green);
+    box-shadow: inset 0 4px 6px rgba(0,0,0,0.06), 0 0 0 5px rgba(123, 168, 127, 0.3);
+}
+
+/* 3D Chunky Leaf Buttons */
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--leaf-green);
+    color: white;
+    border: 3px solid var(--leaf-dark);
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    /* The 3D pop effect */
+    box-shadow: 0 8px 0 var(--leaf-dark);
+    transition: all 0.1s ease;
+    margin-bottom: 0.5rem;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+/* The physical "press" animation */
+button:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 var(--leaf-dark); /* Removes the shadow when pressed flat */
+}
+
+p {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--totoro-grey);
+}
+
+a {
+    color: var(--earth-brown);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+a:hover {
+    color: var(--leaf-green);
+    text-decoration: underline wavy var(--leaf-green);
+}
+
+/* =========================================
+   TODO LIST PERFECTED STYLES
+   ========================================= */
+
+.todo-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Scrollbar styling for Ghibli theme */
+.todo-cards::-webkit-scrollbar {
+    width: 8px;
+}
+.todo-cards::-webkit-scrollbar-thumb {
+    background: var(--totoro-grey);
+    border-radius: 10px;
+}
+
+/* 3D Task Cards */
+.todo-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 3px solid var(--totoro-grey);
+    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 4px 0 var(--totoro-grey);
+    transition: all 0.2s ease;
+}
+
+.todo-card:hover {
+    transform: translateY(-2px) rotate(1deg); /* Slight playful wiggle */
+}
+
+/* Custom Checkbox */
+.todo-card input[type="checkbox"] {
+    margin: 0;
+    margin-right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    accent-color: var(--leaf-green);
+    flex-shrink: 0;
+}
+
+/* Left-aligned task text */
+.todo-card span {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--earth-brown);
+    word-break: break-word;
+}
+
+/* The red "berry" Delete button */
+.todo-card button {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    margin-left: 0.5rem;
+    padding: 0;
+    background-color: var(--danger);
+    border: 3px solid var(--danger-dark);
+    box-shadow: 0 4px 0 var(--danger-dark);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.todo-card button:hover {
+    filter: brightness(1.1);
+}
+
+.todo-card button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--danger-dark);
+}
+
+/* Side-by-side Add Input and Button */
+.add-todo {
+    display: flex;
+    gap: 0.75rem; 
+    border-top: 3px dashed var(--totoro-grey);
+    padding-top: 1.5rem;
+}
+
+.add-todo input {
+    margin: 0; 
+    flex-grow: 1; 
+}
+
+.add-todo button {
+    width: auto; 
+    margin: 0;
+    padding: 0 1.5rem;
+}
