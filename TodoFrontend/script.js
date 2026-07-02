@@ -1,5 +1,5 @@
 // Shared script for login, register, and todos pages
-const SERVER_URL = "http://localhost:8080";
+const SERVER_URL = "https://todo-3d.onrender.com";
 
 // NEW: Logout logic
 function logout() {
